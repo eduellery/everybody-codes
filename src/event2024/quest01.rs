@@ -1,9 +1,9 @@
 pub fn part1(content: &str) -> i32 {
     let mut result = 0;
     for ch in content.chars() {
-        result += get_monster_score(ch)
+        result += get_monster_score(ch);
     }
-    return result;
+    result
 }
 
 pub fn part2(content: &str) -> i32 {
@@ -11,15 +11,15 @@ pub fn part2(content: &str) -> i32 {
     let mut chars = content.chars();
     while let (Some(first), Some(second)) = (chars.next(), chars.next()) {
         if first != 'x' && second != 'x' {
-            result += 2
+            result += 2;
         }
         result += get_monster_score(first);
         result += get_monster_score(second);
     }
-    if let Some(_) = chars.next() {
+    if chars.next().is_some() {
         unimplemented!("Monster ungrouped")
     }
-    return result;
+    result
 }
 
 pub fn part3(content: &str) -> i32 {
@@ -38,10 +38,10 @@ pub fn part3(content: &str) -> i32 {
         result += get_monster_score(second);
         result += get_monster_score(third);
     }
-    if let Some(_) = chars.next() {
+    if chars.next().is_some() {
         unimplemented!("Monster(s) ungrouped")
     }
-    return result;
+    result
 }
 
 fn get_monster_score(monster: char) -> i32 {
